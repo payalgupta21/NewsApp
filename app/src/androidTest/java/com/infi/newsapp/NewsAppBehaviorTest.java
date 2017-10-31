@@ -19,7 +19,12 @@ public class NewsAppBehaviorTest {
 
     @Test
     public void checkDataOnView(){
-        onView(withId(R.id.recyclerView));
+     onView(withId(R.layout.activity_main));
+    }
+
+    @Test
+    public void checkClickOnView(){
+        onView(withId(R.id.recyclerView)).perform(click());
     }
     @Test
     public void clickOnImageViewAtRow() {
