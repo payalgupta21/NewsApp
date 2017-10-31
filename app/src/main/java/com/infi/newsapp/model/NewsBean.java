@@ -8,19 +8,19 @@ import com.google.gson.annotations.SerializedName;
  */
 public class NewsBean {
 
-@SerializedName("title")
+@SerializedName("mTitle")
 @Expose
-private String title;
+private String mTitle;
 @SerializedName("rows")
 @Expose
 private List<Row> rows = null;
 
-public String getTitle() {
-return title;
+public String getmTitle() {
+return mTitle;
 }
 
-public void setTitle(String title) {
-this.title = title;
+public void setmTitle(String mTitle) {
+this.mTitle = mTitle;
 }
 
 public List<Row> getRows() {

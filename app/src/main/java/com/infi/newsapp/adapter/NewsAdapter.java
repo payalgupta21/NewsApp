@@ -14,8 +14,6 @@ import com.squareup.picasso.Picasso;
 import java.util.List;
 import com.infi.newsapp.model.Row;
 
-
-
 /**
  * Created by payal on 10/29/2017.
  */
@@ -25,7 +23,7 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsViewHolder
     private List<Row> mNews;
     private Context mContext;
 
-    public NewsAdapter(Context applicationContext, List<Row> newsList){
+      public NewsAdapter(Context applicationContext, List<Row> newsList){
         this.mContext = applicationContext;
         this.mNews = newsList;
     }
@@ -85,7 +83,6 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsViewHolder
         mNews.clear();
         notifyDataSetChanged();
     }
-
     //RecyclerView mRecycler;
     // Add a list of ites
     public void addAll(int position, List<Row> mov) {
