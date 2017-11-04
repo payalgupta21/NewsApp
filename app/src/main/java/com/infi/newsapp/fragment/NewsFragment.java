@@ -2,7 +2,6 @@ package com.infi.newsapp.fragment;
 
 import android.app.Fragment;
 import android.app.ProgressDialog;
-import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
@@ -14,23 +13,23 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
-
 import com.infi.newsapp.R;
 import com.infi.newsapp.adapter.NewsAdapter;
 import com.infi.newsapp.model.News;
-import com.infi.newsapp.model.Row;
 import com.infi.newsapp.restapi.RestClient;
 import com.infi.newsapp.restapi.RestService;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+/*
+ Newsfragment which has been added to Activity
+ */
 
 public class NewsFragment extends Fragment {
     private RecyclerView mRecyclerView;
     private News mNewsArrayList;
-    private TextView mDisconnected;
-    private Row mNews;
+    private TextView mDisconnectedTextView;
     ProgressDialog mProgressDialog;
     private SwipeRefreshLayout mSwipeContainer;
     private View view;
@@ -47,6 +46,7 @@ public class NewsFragment extends Fragment {
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_news, container, false);
         mSwipeContainer = (SwipeRefreshLayout) view.findViewById(R.id.swipeContainer);
+
         initViews();
         //Configure the refreshing colors
         mSwipeContainer.setColorSchemeResources(android.R.color.holo_orange_dark);
@@ -60,10 +60,11 @@ public class NewsFragment extends Fragment {
         });
         return view;
     }
-
-
+/*
+ Intializing views
+ */
     private void initViews(){
-        mProgressDialog = new ProgressDialog(getActivity());
+        mProgressDialog = new ProgressDialog (getActivity());
         mProgressDialog.setMessage("Fetching News........");
         mProgressDialog.setCancelable(false);
         mProgressDialog.show();
@@ -72,9 +73,11 @@ public class NewsFragment extends Fragment {
         mRecyclerView.smoothScrollToPosition(0);
         loadJSON();
     }
-
+/*
+ load Json method using retrofit api
+ */
     private void loadJSON(){
-        mDisconnected = (TextView) getActivity().findViewById(R.id.disconnected);
+        mDisconnectedTextView = (TextView) getActivity().findViewById(R.id.disconnected);
         try{
             RestClient client = new RestClient();
             RestService request = RestClient.retrofitInstance.create(RestService.class);
@@ -88,13 +91,14 @@ public class NewsFragment extends Fragment {
                     mRecyclerView.smoothScrollToPosition(0);
                     mSwipeContainer.setRefreshing(false);
                     mProgressDialog.hide();
+
                 }
 
                 @Override
                 public void onFailure(Call<News> call, Throwable t) {
                     Log.d("Error", t.getMessage());
                     Toast.makeText(view.getContext(), "Error Fetching mNews !", Toast.LENGTH_SHORT).show();
-                    mDisconnected.setVisibility(View.VISIBLE);
+                    mDisconnectedTextView.setVisibility(View.VISIBLE);
                     mProgressDialog.hide();
 
                 }
@@ -104,16 +108,4 @@ public class NewsFragment extends Fragment {
 
         }
     }
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-    }
-
-    @Override
-    public void onDetach() {
-        super.onDetach();
-    }
-
-
-
-}
+ }

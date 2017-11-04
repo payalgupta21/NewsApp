@@ -3,6 +3,9 @@ package com.infi.newsapp.model;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+/*
+ model clas for getting data for rows
+ */
 public class Row {
 
     @SerializedName("title")
@@ -27,16 +30,8 @@ public class Row {
         return description;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
     public String getImageHref() {
         return imageHref;
-    }
-
-    public void setImageHref(String imageHref) {
-        this.imageHref = imageHref;
     }
 
 }

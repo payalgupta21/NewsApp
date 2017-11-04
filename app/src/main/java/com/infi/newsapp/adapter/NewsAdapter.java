@@ -10,9 +10,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.infi.newsapp.R;
-import com.squareup.picasso.Picasso;
-import java.util.List;
 import com.infi.newsapp.model.Row;
+import com.squareup.picasso.Picasso;
+
+import java.util.List;
 
 /**
  * Created by payal on 10/29/2017.
@@ -34,6 +35,9 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsViewHolder
         return new NewsViewHolder(view);
     }
 
+    /*
+      bind view holder
+     */
     @Override
     public void onBindViewHolder(NewsViewHolder holder, int position) {
         holder.mTitle.setText(mNews.get(position).getTitle());
@@ -49,6 +53,10 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsViewHolder
     public int getItemCount() {
         return mNews.size();
     }
+
+    /*
+      Newsholder class to set data
+     */
 
     public class NewsViewHolder extends RecyclerView.ViewHolder{
         private TextView mTitle, mDetail;
@@ -73,20 +81,6 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsViewHolder
             });
         }
 
-    }
-    /* Within the RecyclerView.Adapter class */
-    // Clean all elements of the recycler
-    public void clear() {
-        mNews.clear();
-        notifyDataSetChanged();
-    }
-    //RecyclerView mRecycler;
-    // Add a list of ites
-    public void addAll(int position, List<Row> mov) {
-        mNews.addAll(0,mov);
-        notifyItemInserted(0);
-        //mRecycler.smoothScrollToPosition(0);
-        notifyDataSetChanged();
     }
 }
 
