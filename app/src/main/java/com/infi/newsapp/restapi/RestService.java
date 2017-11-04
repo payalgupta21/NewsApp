@@ -1,6 +1,6 @@
 package com.infi.newsapp.restapi;
 
-import com.infi.newsapp.model.NewsBean;
+import com.infi.newsapp.model.News;
 import retrofit2.Call;
 import retrofit2.http.GET;
 
@@ -10,7 +10,7 @@ import retrofit2.http.GET;
 
 public interface RestService {
     @GET("/s/2iodh4vg0eortkl/facts.json")
-    Call<NewsBean> getNews();
+    Call<News> getNews();
 
 }
 

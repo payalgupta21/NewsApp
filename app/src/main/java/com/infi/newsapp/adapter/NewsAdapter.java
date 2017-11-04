@@ -23,7 +23,7 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsViewHolder
     private List<Row> mNews;
     private Context mContext;
 
-      public NewsAdapter(Context applicationContext, List<Row> newsList){
+    public NewsAdapter(Context applicationContext, List<Row> newsList){
         this.mContext = applicationContext;
         this.mNews = newsList;
     }
@@ -44,10 +44,7 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsViewHolder
                 .load(mNews.get(position).getImageHref())
                 .placeholder(R.drawable.ic_image_black_24dp)
                 .into(holder.mImageView);
-
-
     }
-
     @Override
     public int getItemCount() {
         return mNews.size();
@@ -59,7 +56,7 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsViewHolder
 
         public NewsViewHolder(View view){
             super(view);
-            mTitle = (TextView)view.findViewById(R.id.title);
+            mTitle = (TextView)view.findViewById(R.id.mTitle);
             mDetail = (TextView)view.findViewById(R.id.detail);
             mImageView = (ImageView)view.findViewById(R.id.cover);
 
@@ -92,24 +89,6 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsViewHolder
         notifyDataSetChanged();
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
